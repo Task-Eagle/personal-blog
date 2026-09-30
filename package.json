@@ -1,0 +1,16 @@
+{
+  "name": "cloudflare-personal-blog",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Personal blog on Cloudflare Pages + D1 with a Markdown admin panel",
+  "scripts": {
+    "dev": "wrangler pages dev public --persist-to .wrangler/state",
+    "deploy": "wrangler pages deploy public",
+    "db:create": "wrangler d1 create personal-blog",
+    "db:migrate:remote": "wrangler d1 execute personal-blog --remote --file=schema.sql",
+    "db:migrate:local": "wrangler d1 execute personal-blog --local --file=schema.sql"
+  },
+  "devDependencies": {
+    "wrangler": "^4.34.0"
+  }
+}

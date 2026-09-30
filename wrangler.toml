@@ -1,0 +1,10 @@
+name = "personal-blog"
+compatibility_date = "2026-09-30"
+pages_build_output_dir = "public"
+
+# After you run: npx wrangler d1 create personal-blog
+# copy the database_id from the output into the line below.
+[[d1_databases]]
+binding = "DB"
+database_name = "personal-blog"
+database_id = "REPLACE_WITH_YOUR_DATABASE_ID"
