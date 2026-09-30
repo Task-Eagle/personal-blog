@@ -2,9 +2,9 @@ name = "personal-blog"
 compatibility_date = "2026-09-30"
 pages_build_output_dir = "public"
 
-# After you run: npx wrangler d1 create personal-blog
-# copy the database_id from the output into the line below.
-[[d1_databases]]
-binding = "DB"
-database_name = "personal-blog"
-database_id = "REPLACE_WITH_YOUR_DATABASE_ID"
+# Do not put a fake database_id here. Pages Git deploys will reject it.
+# Create D1 in the dashboard or with:
+#   npx wrangler d1 create personal-blog
+# Then bind it in the Pages project:
+#   Settings → Bindings → Add → D1 database
+#   Variable name: DB
