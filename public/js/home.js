@@ -13,7 +13,7 @@ if (!pages.length) {
   listEl.innerHTML = pages
     .map(
       (p) => `
-      <a class="post-card" href="/p/${encodeURIComponent(p.slug)}">
+      <a class="post-card" href="/post.html?slug=${encodeURIComponent(p.slug)}">
         <div class="meta">${formatDate(p.created_at)}</div>
         <h2>${escapeHtml(p.title)}</h2>
         <p class="excerpt">${escapeHtml(p.excerpt || "")}</p>

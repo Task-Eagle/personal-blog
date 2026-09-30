@@ -2,9 +2,14 @@ import { paintChrome, getJson, formatDate, renderMarkdown, escapeHtml } from "./
 
 function slugFromLocation() {
   const params = new URLSearchParams(location.search);
-  if (params.get("slug")) return params.get("slug");
+  const fromQuery = params.get("slug") || params.get("id");
+  if (fromQuery) return fromQuery;
+
   const parts = location.pathname.split("/").filter(Boolean);
-  if (parts[0] === "p" && parts[1]) return decodeURIComponent(parts[1]);
+  const pIndex = parts.indexOf("p");
+  if (pIndex >= 0 && parts[pIndex + 1] && parts[pIndex + 1] !== "post.html") {
+    return decodeURIComponent(parts[pIndex + 1]);
+  }
   return "";
 }
 
@@ -26,7 +31,7 @@ try {
   document.title = "Not found";
   article.innerHTML = `
     <h1>Post not found</h1>
-    <p class="excerpt">${err.message}</p>
+    <p class="excerpt">${escapeHtml(err.message)}</p>
     <p><a href="/">Back home</a></p>
   `;
 }

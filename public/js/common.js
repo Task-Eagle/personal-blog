@@ -74,7 +74,7 @@ export async function paintChrome(current = "") {
       `<a href="/" ${current === "home" ? 'aria-current="page"' : ""}>Home</a>`,
       ...pages.slice(0, 6).map(
         (p) =>
-          `<a href="/p/${encodeURIComponent(p.slug)}" ${
+          `<a href="/post.html?slug=${encodeURIComponent(p.slug)}" ${
             current === p.slug ? 'aria-current="page"' : ""
           }>${escapeHtml(p.title)}</a>`
       ),
