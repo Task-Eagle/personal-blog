@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/">
+        <span class="brand-name" data-site-name>Field Notes</span>
+        <span class="brand-tag" data-site-tagline>A small personal blog.</span>
+      </a>
+      <nav class="nav" data-nav></nav>
+    </div>
+  </header>
+
+  <main class="wrap admin-shell">
+    <div data-flash hidden></div>
+
+    <section class="panel" data-login>
+      <h1>Admin sign in</h1>
+      <p class="hint">Use the password you stored as ADMIN_PASSWORD in Cloudflare.</p>
+      <form data-login-form>
+        <p>
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" required autocomplete="current-password" />
+        </p>
+        <button class="btn" type="submit">Sign in</button>
+      </form>
+    </section>
+
+    <section data-dash hidden>
+      <div class="panel">
+        <div class="row" style="justify-content: space-between;">
+          <h1 style="margin:0;">Posts</h1>
+          <div class="row">
+            <button class="btn" data-new type="button">New post</button>
+            <button class="btn secondary" data-logout type="button">Sign out</button>
+          </div>
+        </div>
+        <div class="admin-list" data-admin-list></div>
+      </div>
+
+      <div class="panel">
+        <h2>Site name</h2>
+        <form data-settings-form>
+          <p>
+            <label for="site_name">Name</label>
+            <input id="site_name" type="text" maxlength="120" required />
+          </p>
+          <p>
+            <label for="tagline">Tagline</label>
+            <input id="tagline" type="text" maxlength="120" required />
+          </p>
+          <button class="btn secondary" type="submit">Save site name</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="panel" data-editor hidden>
+      <h2 data-editor-heading>New post</h2>
+      <form data-editor-form>
+        <p>
+          <label for="title">Title</label>
+          <input id="title" type="text" maxlength="200" required />
+        </p>
+        <p>
+          <label for="slug">URL slug (optional)</label>
+          <input id="slug" type="text" maxlength="80" placeholder="my-post-title" />
+        </p>
+        <p>
+          <label>
+            <input id="published" type="checkbox" checked />
+            Published (uncheck to keep as draft)
+          </label>
+        </p>
+        <div class="editor-grid">
+          <p style="margin:0;">
+            <label for="content">Markdown</label>
+            <textarea id="content" placeholder="# Heading&#10;&#10;Write here..."></textarea>
+          </p>
+          <div>
+            <label>Preview</label>
+            <div class="preview md" data-preview></div>
+          </div>
+        </div>
+        <div class="row" style="margin-top:16px;">
+          <button class="btn" type="submit">Save post</button>
+          <button class="btn secondary" data-cancel type="button">Cancel</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked@15.0.7/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.5/dist/purify.min.js"></script>
+  <script type="module" src="/js/admin.js"></script>
+</body>
+</html>
